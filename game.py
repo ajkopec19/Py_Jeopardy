@@ -8,20 +8,36 @@ class QnA:
     def __init__(self, question, answer):
         self.question = question
         self.answer = answer
+
     def getQuestion(self):
         return self.question
+    
     def getAnswer(self):
         return self.answer
     
-class Category:
-    def __init__(self, category, desc):
-        self.category = category
-        self.desc = desc
-    def getCategory(self):
-        return self.category
-    def getDesc(self):
-        return self.desc
+    def validateAns(self, guess):
+        if(self.answer in guess.lower()):
+            return True
+        else:
+            return False
     
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.points = 0
+
+    def getName(self):
+        return self.name
+    
+    def getPoints(self):
+        return self.points
+    
+    def addPoints(self, add):
+        self.points+=add
+    
+    def removePoints(self, subtract):
+        self.points-=subtract
+        
 def categories():
     category = [("Some Nostaglia For Ya", "All answers will pertain to things from the 2000s and early 2010s."),
                 ("Be a Good Sport", "All answers will pertain to sports."),
@@ -29,7 +45,7 @@ def categories():
                 ("Astronomy", "All answers will pertain to astronomy."),
                 ('''Sorry, I Have a "Nut" Allergy''', '''All answers will contain the word "nut".'''),
                 ("The Apple of my Eye", "All answers pertain to apples."),
-                ("Discrete Math", "No, not Discreet. All answers have to do with discrete math. Sorry Com Sci kids."),
+                ("Vocabulary Bee", "The answer will be the word that the definition best fits."),
                 ("Finish the Phrase", "All answers will be the missing part of the phrase."),
                 ("Geology in Geography", "All answers will be the location of the mentioned geological formation or event."),
                 ("HOMES Sweet HOMES", "All answers pertain to the Great Lakes from Michigan."),
@@ -44,7 +60,7 @@ def sport():
          "football"),
         ("The majority of people have heard of NASCAR, but what they hopefully know is it's an acronym for this.",
          "national association for stock car auto racing"),
-        ("In soccer, a yellow card means a player has been cautioned. In field hockey, it means a player must sit out for a minimum of this many minutes."
+        ("In soccer, a yellow card means a player has been cautioned. In field hockey, it means a player must sit out for a minimum of this many minutes.",
          "five"),
         ("Former Chicago Bears defensive tackle William Perry was given this nickname by a college teammate struggling to get into the same elevator as him. Cold!",
          "refrigerator"),
@@ -73,8 +89,38 @@ def nostalgia():
     return nostalgiaQuestions
 # insert more categories below this after further testing
 
-def dailyDouble():
-    print("yeye")
+def dailyDouble(qna, player):
+    print("You have earned a daily double!")
+    print("Here's how it works:")
+    print("You'll input a point wager. The wager cannot be over your current point amount. If you are in the negatives or right at zero, it cannot be over 2000 points.")
+    print("After that, you'll be prompted to answer the question. Whether or not you earn those points will depend on if you answer the question correctly.")
+    print("You currently have {} points.".format(player.getPoints()))
+    w = True
+    while w:
+        if(player.getPoints() <= 0):
+            wager = input("Enter your wager(1 - 2000): ")
+            if(int(wager) > 2000) or (int(wager) < 1) or (wager.isdigit() == False):
+                print("Invalid input. Please try again.")
+                continue
+            else:
+                w = False
+        else:
+            wager = input("Enter your wager(1 - {}): ".format(player.getPoints()))
+            if(int(wager) > player.getPoints()) or (int(wager) < 1) or (wager.isdigit() == False):
+                print("Invalid input. Please try again.")
+                continue
+            else:
+                w = False
+    print(qna.getQuestion())
+    guess = getGuess()
+    correct = qna.validateAns(guess)
+    if(correct == True):
+        print("That answer is correct! You have earned {} points.".format(wager))
+        player.addPoints(int(wager))
+    else:
+        print("That is incorrect. The correct answer is: {}".format(qna.getAnswer().title()))
+        player.removePoints(int(wager))
+        
 
 def getCatnAns():
     cat = categories()
@@ -90,8 +136,9 @@ def firstRound(categories):
         pointDict = {}
         points = 200
         for e in range(0, 5):
-            q = random.randint(0, 5)
+            q = random.randint(0, len(test[cat][1])-1)
             pointDict[points] = test[cat][1][q]
+            del test[cat][1][q]
             points+=200
         tup = (test[cat][0], pointDict)
         candq[catNum] = tup
@@ -114,24 +161,28 @@ def getGuess():
             print('''Answer must contain "Who is" or "What is"''')
     return guess
 
-
-def game():
-    print("Jeopardy rules yadda yadda yadda")
+def getPlayer():
     #p1 = input("Player One, enter your name: ")
-    #p2 = input("Player One, enter your name: ")
-    #p3 = input("Player One, enter your name: ")
-    p1 = "bruh"
-    p2 = "man"
-    p3 = "ur mom"
-    players = {p1: 0, p2: 0, p3: 0}
-    pKeys = [p1, p2, p3]
+    #p2 = input("Player Two, enter your name: ")
+    #p3 = input("Player Three, enter your name: ")
+    p1 = Player("bruh")
+    p2 = Player("man")
+    p3 = Player("ur mom")
+    return [p1, p2, p3]
+
+
+
+def gameone():
+    print("Jeopardy rules yadda yadda yadda")
+    players = getPlayer()
     cna = firstRound(getCatnAns())
     rCats = cna[0]
     del cna[0]
     player = 0
+    dd = 0
     fr = True
     while fr:
-        print("{}, its your turn.".format(pKeys[player]))
+        print("{}, its your turn.".format(players[player].getName()))
         cat = True
         while cat:
             print("Available Categories: ")
@@ -139,21 +190,55 @@ def game():
                 print("{}: {}".format(item, cna[item][0][0]))
             cCat = input("Enter the category number: ")
             if(cCat.isdigit() and int(cCat)>0 and int(cCat) in cna.keys()):
+                cCat = int(cCat)
                 cat = False
             else:
                 print("Invalid input. Please try again.")
                 continue
+        print(cna[cCat][0][0])
+        print(cna[cCat][0][1])
         question = True
         while question:
             print("Available Questions:")
             for item in cna[int(cCat)][1]:
                 print(item)
             cQuest = input("Enter a point amount: ")
-            if(cQuest.isdigit() and int(cQuest)>0 and int(cQuest) in cna[int(cCat)][1].keys()):
+            if(cQuest.isdigit() and int(cQuest)>0 and int(cQuest) in cna[cCat][1].keys()):
+                cQuest = int(cQuest)
                 question = False
             else:
                 print("Invalid input. Please try again.")
                 continue
+        qna = QnA(cna[cCat][1][cQuest][0], cna[cCat][1][cQuest][1])
+        if(len(cna) == 1) and (len(cna[cCat][1]) == 1) and (dd == 0):
+            dailyDouble(qna, players[player])
+        elif(random.randint(1, 10) == 10) and (dd == 0):
+            dailyDouble(qna, players[player])
+        else:
+            print(qna.getQuestion())
+            guess = getGuess()
+            correct = qna.validateAns(guess)
+            if(correct == True):
+                print("That answer is correct! You have earned {} points.".format(cQuest))
+                players[player].addPoints(cQuest)
+            else:
+                print("That is incorrect. The correct answer is: {}".format(qna.getAnswer().title()))
+                players[player].removePoints(cQuest)
+        del cna[cCat][1][cQuest]
+        if(len(cna[cCat][1]) == 0):
+            del cna[cCat]
+        if(len(cna) == 0):
+            print("Round one over!")
+            fr = False
+        player+=1
+        if(player > 2):
+            player = 0
+    print("Here are the current standings: ")
+    sorted_players = sorted(players, key=lambda x: x.points)
+    print("1. {} with {} points".format(sorted_players[2].getName(), sorted_players[2].getPoints()))
+    print("2. {} with {} points".format(sorted_players[1].getName(), sorted_players[1].getPoints()))
+    print("3. {} with {} points".format(sorted_players[0].getName(), sorted_players[0].getPoints()))
+    return [rCats, players]
+
         
-        
-game()
+tranfer_vars = gameone()
