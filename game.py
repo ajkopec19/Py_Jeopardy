@@ -42,7 +42,7 @@ def categories():
     category = [("Some Nostaglia For Ya", "All answers will pertain to things from the 2000s and early 2010s."),
                 ("Be a Good Sport", "All answers will pertain to sports."),
                 ("Eighties Lyrics", "The answers is the name of the song the lyrics are from."), 
-                ("Astronomy", "All answers will pertain to astronomy."),
+                ("Out of this World", "All answers will pertain to astronomy."),
                 ('''Sorry, I Have a "Nut" Allergy''', '''All answers will contain the word "nut".'''),
                 ("The Apple of my Eye", "All answers pertain to apples."),
                 ("Vocabulary Bee", "The answer will be the word that the definition best fits."),
@@ -87,7 +87,176 @@ def nostalgia():
          "minecraft")
     ]
     return nostalgiaQuestions
-# insert more categories below this after further testing
+
+def eighties():
+    eightiesQuestions = [
+        ('''"We're no strangers to love/You know the rules, and so do I"; 1987''',
+         "never gonna give you up"),
+        ('''"Money's the matter/If you're in it for love, you ain't gonna get too far"; 1982''',
+         "maneater"),
+        ('''"I'm never gonna dance again/Guilty feet have got no rhythm"; 1984''',
+         "careless whisper"),
+        ('''"People always told me be careful what you do/And don't go around breaking young girl's hearts"; 1982''',
+         "billie jean"),
+        ('''"It ain't much I'm asking, if you want the truth/Here's to the future for the dreams of youth"; 1989''',
+         "i want it all"),
+        ('''"Gina dreams of running away/When she cries in the night, Tommy whispers/'Baby, it's okay, someday'"; 1987''',
+         "livin on a prayer")
+    ]
+    return eightiesQuestions
+
+def world():
+    worldQuestions = [
+        ("In 2019, the Event Horizon Telescope released the very first image of this region of spacetime, best known for being so dense not even light can escape it.", 
+         "black hole"),
+        ("There are typically two full moons per month. However, a third full moon within that month is known as this.",
+         "blue moon"),
+        ("This solar phenomena are the main reasons for auroras to appear at the Earth's poles. If strong enough, it could also severely disrupt technology.",
+          "geomagnetic storms"),
+        ("This galaxy, named for the wife of Perseus in Greek mythology, is the only other galaxy(besides the Milky Way) that is visible to the naked eye.",
+         "andromeda"),
+        ('''"To prevent war, the galaxy is on Orion's belt." Not quite...but Orion's this is south of the belt, also known as a "stellar nursery".''',
+         "nebula"), 
+        ("When a massive star dies, they tend to go out with a bright, massive bang, otherwise known as this.",
+         "supernova")
+    ]
+    return worldQuestions
+
+def nut():
+    nutQuestions = [
+        ("60 seconds.",
+        "minute"),
+        ("Lack of proper nourishment.",
+         "malnutrition"),
+        ("Not put to use; ends in -ed",
+         "unutilized"),
+        ("A ring-shaped sweet fried dough; five letter",
+         "donut"),
+        ("A legume crop with edible seeds; also known as a goober.",
+         "peanut")
+        ("Useless; pointless",
+         "unutile")
+    ]
+    return nutQuestions
+
+def apple():
+    appleQuestions = [
+        ("The origins of the caramel apple stem from this city in New Jersey, currently known for having one of the busiest airports in the world.",
+         "Newark"),
+        ("This man, best known as Johnny Appleseed, introduced apple trees into states like Pennsylvania and Illinois.",
+         "John Chapman"),
+        ("Despite apples being promiment in the United States, only this type of apple is native to the country.",
+         "crabapple")
+        ("Growing apples is actually a science! It's a branch of botany called this, which also encompasses all other fruits like a pear.",
+         "pomology"),
+        ("Be careful when consuming apple seeds. They contain traces of this dangerous chemical, known for having a bitter almond scent.",
+         "cyanide"),
+        ("Apples trees produce beautiful flowers, so it's no surprise that the fruit is in the same family as this romantic flower.",
+         "rose")
+    ]
+    return appleQuestions
+
+def vocab():
+    vocabQuestions = [
+        ("A ghost; starts with s",
+         "specter"),
+        ("Infection, or a hidden program that harms a computer",
+         "virus")
+        ("A student, or the centermost part of the eye",
+         "pupil")
+        ("Nonprofessional, or someone who is inept at a particular activity; starts with a",
+         "amateur")
+        ("Magical or medicinal potion",
+         "elixir")
+        ("Picturesque, or extremely happy and peaceful; starts with i",
+         "idyllic")
+    ]
+    return vocabQuestions
+
+def phrase():
+    phraseQuestions = [
+        ("Jack of all trades",
+         "master of none"),
+        ("You can lead a horse to water",
+         "but you cannot make it drink"),
+        ("Those who live in glass houses",
+         "should not throw stones"),
+        ("The early bird",
+         "gets the worm"),
+        ("An eye for an eye",
+         "makes the whole world blind"),
+        ("All work and no play",
+         "makes jack a dull boy")
+    ]
+    return phraseQuestions
+
+def gng():
+    gngQuestions = [
+        ("The Mount Tambora Eruption of April 1815; country in Southeast Asia and Oceania",
+         "indonesia"),
+        ("Vadivia Earthquake, with a record 9.5 magnitude; country in western South America",
+         "chile"),
+        ("Mount Elbert, the highest point in the Rockies; U.S. state in the west",
+         "colorado"),
+        ("Petrified forest, a national park full of petrified wood; U.S. state in the southwest",
+         "arizona"),
+        ("Lituya Bay megatsunami, with about 1700 foot waves; U.S. state in the northwest",
+         "alaska"),
+        ("The Matterhorn, the world's most photogenic mountain; country in Central Europe",
+         "switzerland")
+    ]
+    return gngQuestions
+
+def homes():
+    homesQuestions = [
+        ("Lake Erie is allegedly home to a folkloreish monster with this nickname. It had been spotted on multiple occassions over the course of decades.",
+         "bessie"),
+        ("The lakes have their own area of unexplained plane and boat disappearances, quite similar to this region in the North Atlantic Ocean.",
+         "bermuda triangle"),
+        ('''The Lake Michigan shoreline is the only place you can find this type of stone, best known for its "rays of the rising sun" pattern.''',
+         "petoskey"),
+        ("This large island based in Lake Superior contains several smaller lakes within it. A lake on a lake, how about that.",
+         "isle royale")
+        ("Lake Michigan and Lake Huron are, hydrologically speaking, one lake because they share the same water and are connected by this narrow passage of water.",
+         "strait")
+        ("When this record-breaking heavy hitter from the Yankees hit his first home run in Toronto, it it believed that the ball landed in Lake Ontario.",
+         "babe ruth")
+    ]
+    return homesQuestions
+
+def shocking():
+    shockingQuestions = [
+        ("Yes, it is possible for it to rain cats and dogs...literally. In Calagary in 1921, thousands of these amphibians poured from the skies.",
+         "frog")
+        ("Occassionally, this type of cloud appearing as bulbous pouches will hang underneath the base of a raincloud after a major thunderstorm.",
+         "mammatus"),
+        ("There are four types of thunderstorms: single-cell, multi-cell clusturs, multi-cell lines, and this, which is one of the most destructive thunderstorm types.",
+         "supercell"),
+        ("In 1992, a breeding facility for burmese python was demolished, allowing many of the snakes to escape? How? You have this Category 5 hurricane to thank.",
+         "andrew"),
+        ("What do you get when you mix snow with a thunderstorm? This rare weather phenomenon, which is more commonly occuring near larger lakes.",
+         "thundersnow"),
+        ("This type of windstorm can reach wind speeds of up to 58 miles per hour and are incredibly dangerous. In Iowa, it caused over 12 billion dollars worth of damage.",
+         "derecho")
+    ]
+    return shockingQuestions
+
+def dog():
+    dogQuestions = [
+        ("Even dogs have their own fingerprints! Rather, the print of this bodypart is unique to every dog.",
+         "nose"),
+        ("The Basenji dog isn't entirely barkless. They can do this, or a form of singing popular in Switzerland.",
+         "yodel"),
+        ("The Labrador Retriver, one of America's most popular dog, is actually from this country in the far north.",
+         "newfoundland"),
+        ("There dogs - two Pomeranians and a Pekingese - survived the sinking of this massive passenger liner in 1912.",
+         "titanic"),
+        ("This type of dog could beat out a cheetah in a race, as they can run at about 35 miles per hour for an elongated period of time.",
+         "greyhound"),
+        ("A group of pugs is called a this, or a low, rumbling sound made as a noise of complaint.",
+         "grumble")
+    ]
+    return dogQuestions
 
 def dailyDouble(qna, player):
     print("You have earned a daily double!")
