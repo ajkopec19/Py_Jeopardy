@@ -112,7 +112,7 @@ def world():
         ("There are typically two full moons per month. However, a third full moon within that month is known as this.",
          "blue moon"),
         ("This solar phenomena are the main reasons for auroras to appear at the Earth's poles. If strong enough, it could also severely disrupt technology.",
-          "geomagnetic storms"),
+          "geomagnetic storm"),
         ("This galaxy, named for the wife of Perseus in Greek mythology, is the only other galaxy(besides the Milky Way) that is visible to the naked eye.",
          "andromeda"),
         ('''"To prevent war, the galaxy is on Orion's belt." Not quite...but Orion's this is south of the belt, also known as a "stellar nursery".''',
@@ -133,7 +133,7 @@ def nut():
         ("A ring-shaped sweet fried dough; five letter",
          "donut"),
         ("A legume crop with edible seeds; also known as a goober.",
-         "peanut")
+         "peanut"),
         ("Useless; pointless",
          "unutile")
     ]
@@ -142,11 +142,11 @@ def nut():
 def apple():
     appleQuestions = [
         ("The origins of the caramel apple stem from this city in New Jersey, currently known for having one of the busiest airports in the world.",
-         "Newark"),
+         "newark"),
         ("This man, best known as Johnny Appleseed, introduced apple trees into states like Pennsylvania and Illinois.",
-         "John Chapman"),
+         "john chapman"),
         ("Despite apples being promiment in the United States, only this type of apple is native to the country.",
-         "crabapple")
+         "crabapple"),
         ("Growing apples is actually a science! It's a branch of botany called this, which also encompasses all other fruits like a pear.",
          "pomology"),
         ("Be careful when consuming apple seeds. They contain traces of this dangerous chemical, known for having a bitter almond scent.",
@@ -161,13 +161,13 @@ def vocab():
         ("A ghost; starts with s",
          "specter"),
         ("Infection, or a hidden program that harms a computer",
-         "virus")
+         "virus"),
         ("A student, or the centermost part of the eye",
-         "pupil")
+         "pupil"),
         ("Nonprofessional, or someone who is inept at a particular activity; starts with a",
-         "amateur")
+         "amateur"),
         ("Magical or medicinal potion",
-         "elixir")
+         "elixir"),
         ("Picturesque, or extremely happy and peaceful; starts with i",
          "idyllic")
     ]
@@ -216,9 +216,9 @@ def homes():
         ('''The Lake Michigan shoreline is the only place you can find this type of stone, best known for its "rays of the rising sun" pattern.''',
          "petoskey"),
         ("This large island based in Lake Superior contains several smaller lakes within it. A lake on a lake, how about that.",
-         "isle royale")
+         "isle royale"),
         ("Lake Michigan and Lake Huron are, hydrologically speaking, one lake because they share the same water and are connected by this narrow passage of water.",
-         "strait")
+         "strait"),
         ("When this record-breaking heavy hitter from the Yankees hit his first home run in Toronto, it it believed that the ball landed in Lake Ontario.",
          "babe ruth")
     ]
@@ -227,12 +227,12 @@ def homes():
 def shocking():
     shockingQuestions = [
         ("Yes, it is possible for it to rain cats and dogs...literally. In Calagary in 1921, thousands of these amphibians poured from the skies.",
-         "frog")
+         "frog"),
         ("Occassionally, this type of cloud appearing as bulbous pouches will hang underneath the base of a raincloud after a major thunderstorm.",
          "mammatus"),
         ("There are four types of thunderstorms: single-cell, multi-cell clusturs, multi-cell lines, and this, which is one of the most destructive thunderstorm types.",
          "supercell"),
-        ("In 1992, a breeding facility for burmese python was demolished, allowing many of the snakes to escape? How? You have this Category 5 hurricane to thank.",
+        ("In 1992, a breeding facility for burmese pythons was demolished, allowing many of the snakes to escape. How? You have this Category 5 hurricane to thank.",
          "andrew"),
         ("What do you get when you mix snow with a thunderstorm? This rare weather phenomenon, which is more commonly occuring near larger lakes.",
          "thundersnow"),
@@ -259,6 +259,7 @@ def dog():
     return dogQuestions
 
 def dailyDouble(qna, player):
+    print("")
     print("You have earned a daily double!")
     print("Here's how it works:")
     print("You'll input a point wager. The wager cannot be over your current point amount. If you are in the negatives or right at zero, it cannot be over 2000 points.")
@@ -280,6 +281,7 @@ def dailyDouble(qna, player):
                 continue
             else:
                 w = False
+    print("")
     print(qna.getQuestion())
     guess = getGuess()
     correct = qna.validateAns(guess)
@@ -292,28 +294,62 @@ def dailyDouble(qna, player):
         
 
 def getCatnAns():
-    cat = categories()
+    category = categories()
+    cat = [
+        (category[0], nostalgia()),
+        (category[1], sport()),
+        (category[2], eighties()),
+        (category[3], world()),
+        (category[4], nut()),
+        (category[5], apple()),
+        (category[6], vocab()),
+        (category[7], phrase()),
+        (category[8], gng()),
+        (category[9], homes()),
+        (category[10], shocking()),
+        (category[11], dog()),
+    ]
     qnaList = cat
     return qnaList
 
 def firstRound(categories):
-    test = [(categories[0], nostalgia()), (categories[1], sport())]
+    #test = [(categories[0], nostalgia()), (categories[1], sport())]
     candq = {}
     catNum = 1
-    for i in range(len(test)):
-        cat = random.randint(0, len(test) - 1)
+    for i in range(0, 6):
+        cat = random.randint(0, len(categories)-1)
         pointDict = {}
         points = 200
         for e in range(0, 5):
-            q = random.randint(0, len(test[cat][1])-1)
-            pointDict[points] = test[cat][1][q]
-            del test[cat][1][q]
+            q = random.randint(0, len(categories[cat][1])-1)
+            pointDict[points] = categories[cat][1][q]
+            del categories[cat][1][q]
             points+=200
-        tup = (test[cat][0], pointDict)
+        tup = (categories[cat][0], pointDict)
         candq[catNum] = tup
         t = categories[cat]
         categories.remove(t)
-        test.pop(cat)
+        catNum+=1
+    candq[0] = categories
+    return candq
+
+def secondRound(categories):
+    #test = [(categories[0], nostalgia()), (categories[1], sport())]
+    candq = {}
+    catNum = 1
+    for i in range(0, 6):
+        cat = random.randint(0, len(categories)-1)
+        pointDict = {}
+        points = 400
+        for e in range(0, 5):
+            q = random.randint(0, len(categories[cat][1])-1)
+            pointDict[points] = categories[cat][1][q]
+            del categories[cat][1][q]
+            points+=400
+        tup = (categories[cat][0], pointDict)
+        candq[catNum] = tup
+        t = categories[cat]
+        categories.remove(t)
         catNum+=1
     candq[0] = categories
     return candq
@@ -331,18 +367,27 @@ def getGuess():
     return guess
 
 def getPlayer():
-    #p1 = input("Player One, enter your name: ")
-    #p2 = input("Player Two, enter your name: ")
-    #p3 = input("Player Three, enter your name: ")
-    p1 = Player("bruh")
-    p2 = Player("man")
-    p3 = Player("ur mom")
+    n1 = input("Player One, enter your name: ")
+    n2 = input("Player Two, enter your name: ")
+    n3 = input("Player Three, enter your name: ")
+    p1 = Player(n1)
+    p2 = Player(n2)
+    p3 = Player(n3)
     return [p1, p2, p3]
 
 
 
 def gameone():
-    print("Jeopardy rules yadda yadda yadda")
+    print("Welcome to Jeopardy: Python Edition.")
+    print("In this game, three players/teams will be competing against each other to earn the most points.")
+    print("In order to get the points, questions will have to be answered correctly. If not, they will be subtracted from the score.")
+    print("A couple notes before we begin:")
+    print("- If a question required you to answer with a number, enter in the number in words(i.e. eleven, twenty-one)")
+    print("- Always answer with singular nouns(i.e. dog, planet)")
+    print("- If answering with a company name or product name, enter the exact name of the company or product(i.e. Baskin-Robbins, Microsoft Edge). No exceptions!")
+    print("- Make sure your answers are spelled correctly. Incorrect spelling will mean you're wrong.")
+    print('''- As always, ente your answer using "who is" or "what is". You won't be penalized if you forget.''')
+    start = input("Press any key to start the game.")
     players = getPlayer()
     cna = firstRound(getCatnAns())
     rCats = cna[0]
@@ -351,6 +396,7 @@ def gameone():
     dd = 0
     fr = True
     while fr:
+        print("")
         print("{}, its your turn.".format(players[player].getName()))
         cat = True
         while cat:
@@ -364,8 +410,10 @@ def gameone():
             else:
                 print("Invalid input. Please try again.")
                 continue
+        print("")
         print(cna[cCat][0][0])
         print(cna[cCat][0][1])
+        print("")
         question = True
         while question:
             print("Available Questions:")
@@ -384,6 +432,7 @@ def gameone():
         elif(random.randint(1, 10) == 10) and (dd == 0):
             dailyDouble(qna, players[player])
         else:
+            print("")
             print(qna.getQuestion())
             guess = getGuess()
             correct = qna.validateAns(guess)
@@ -394,6 +443,7 @@ def gameone():
                 print("That is incorrect. The correct answer is: {}".format(qna.getAnswer().title()))
                 players[player].removePoints(cQuest)
         del cna[cCat][1][cQuest]
+        print("You currently have {} points.".format(players[player].getPoints()))
         if(len(cna[cCat][1]) == 0):
             del cna[cCat]
         if(len(cna) == 0):
@@ -409,5 +459,152 @@ def gameone():
     print("3. {} with {} points".format(sorted_players[0].getName(), sorted_players[0].getPoints()))
     return [rCats, players]
 
+def gametwo(vars):
+    rCats = vars[0]
+    players = vars[1]
+    print("Let's begin Double Jeopardy.")
+    print("This round, all points will be doubled.")
+    start = input("Press enter when you're ready to begin.")
+    cna = secondRound(rCats)
+    rCats = cna[0]
+    del cna[0]
+    player = 0
+    dd = 0
+    fr = True
+    while fr:
+        print("")
+        print("{}, its your turn.".format(players[player].getName()))
+        cat = True
+        while cat:
+            print("Available Categories: ")
+            for item in cna:
+                print("{}: {}".format(item, cna[item][0][0]))
+            cCat = input("Enter the category number: ")
+            if(cCat.isdigit() and int(cCat)>0 and int(cCat) in cna.keys()):
+                cCat = int(cCat)
+                cat = False
+            else:
+                print("Invalid input. Please try again.")
+                continue
+        print("")
+        print(cna[cCat][0][0])
+        print(cna[cCat][0][1])
+        print("")
+        question = True
+        while question:
+            print("Available Questions:")
+            for item in cna[int(cCat)][1]:
+                print(item)
+            cQuest = input("Enter a point amount: ")
+            if(cQuest.isdigit() and int(cQuest)>0 and int(cQuest) in cna[cCat][1].keys()):
+                cQuest = int(cQuest)
+                question = False
+            else:
+                print("Invalid input. Please try again.")
+                continue
+        qna = QnA(cna[cCat][1][cQuest][0], cna[cCat][1][cQuest][1])
+        if(len(cna) <= 2) and (len(cna[cCat][1]) == 1 or len(cna[cCat][1]) == 2) and (dd < 2):
+            dailyDouble(qna, players[player])
+            dd+=1
+        elif(random.randint(1, 10) == 10) and (dd < 2):
+            dailyDouble(qna, players[player])
+            dd+=1
+        else:
+            print("")
+            print(qna.getQuestion())
+            guess = getGuess()
+            correct = qna.validateAns(guess)
+            if(correct == True):
+                print("That answer is correct! You have earned {} points.".format(cQuest))
+                players[player].addPoints(cQuest)
+            else:
+                print("That is incorrect. The correct answer is: {}".format(qna.getAnswer().title()))
+                players[player].removePoints(cQuest)
+        del cna[cCat][1][cQuest]
+        print("You currently have {} points.".format(players[player].getPoints()))
+        if(len(cna[cCat][1]) == 0):
+            del cna[cCat]
+        if(len(cna) == 0):
+            print("Round two over!")
+            fr = False
+        player+=1
+        if(player > 2):
+            player = 0
+    print("Here are the current standings: ")
+    sorted_players = sorted(players, key=lambda x: x.points)
+    print("1. {} with {} points".format(sorted_players[2].getName(), sorted_players[2].getPoints()))
+    print("2. {} with {} points".format(sorted_players[1].getName(), sorted_players[1].getPoints()))
+    print("3. {} with {} points".format(sorted_players[0].getName(), sorted_players[0].getPoints()))
+    return sorted_players
+
+def finalJeopardy(players):
+    print("Welcome to Final Jeopardy")
+    print("Here's how it works:")
+    print("Everyone will be given the same question, but each player/team will be prompted to answer the question separately within the minute time limit.")
+    print("You'll input a point wager. The wager cannot be over your current point amount. If you are in the negatives or right at zero, you will be unable to enter wager, but still can answer the question.")
+    print("After that, you'll be prompted to answer the question. Whether or not you earn those points will depend on if you answer the question correctly.")
+    g = input("Press enter to continue.")
+    fjcna = [
+        (("It's Greek to Me", "The answer will be related to Greek Mythology."), 
+         ("Atalanta should've been able to defeat anyone in a footrace, but this man, with the help of Aphrodite, managed to beat her and win her hand in marriage.", "hippomenes")),
+        (("Hot Coffee and History", "The answer will be related to coffee in history."),
+        ("During the civil war, soldiers used this common tree nut to make coffee.", "acorn")), 
+        (("Odd Fruit", "The answer will pertain to fruit."),
+         ("The Winter Banana is not actually a banana, but this sweet/tarty fruit.", "apple"))
+    ]
+    qnaNum = random.randint(0,2)
+    qna = QnA(fjcna[qnaNum][1][0], fjcna[qnaNum][1][1])
+    wagers = []
+    for player in players:
+        player.addPoints(2000)
+        print("{}, you're up.".format(player.getName()))
+        print("You currently have {} points.".format(player.getPoints()))
+        if(player.getPoints() <= 0):
+            print("You will not be able to earn points in Double Jeopardy. You can, however, still answer the question.")
+            g = input("Press enter to continue.")
+            continue
+        else:
+            w = True
+            while w:
+                wager = input("Enter your wager(1 - {}): ".format(player.getPoints()))
+                if(int(wager) > player.getPoints()) or (int(wager) < 1) or (wager.isdigit() == False):
+                    print("Invalid input. Please try again.")
+                    continue
+                else:
+                    wagers.append(wager)
+                    w = False
+    print("")
+    print("Everyone, here is your question:")
+    print(qna.getQuestion())
+    t = input("Timer starts now. Press enter when one minutes is up.")
+    print("Time is up.")
+    guesses = []
+    for player in players:
+        print("{}, you're up.".format(player.getName()))
+        guess = getGuess()
+        correct = qna.validateAns(guess)
+        guesses.append(correct)
+    print("All guesses have been collected.")
+    print("The answer to the question was: {}.".format(qna.getAnswer().title()))
+    p = 0
+    for player in players:
+        if(guesses[p] == True):
+            print("{} has gotten it correct and earned {} points.".format(player.getName(), wagers[p]))
+            player.addPoints(int(wagers[p]))
+        else:
+            print("{} has gotten it incorrect and lost {} points.".format(player.getName(), wagers[p]))
+            player.removePoints(int(wagers[p]))
+        p+=1
+    m = input("Press any key to continue.")
+    sorted_players = sorted(players, key=lambda x: x.points)
+    print("1. {} with {} points".format(sorted_players[2].getName(), sorted_players[2].getPoints()))
+    print("2. {} with {} points".format(sorted_players[1].getName(), sorted_players[1].getPoints()))
+    print("3. {} with {} points".format(sorted_players[0].getName(), sorted_players[0].getPoints()))
+    print("{} has won!".format(sorted_players[2].getName()))
+    print("Thanks for playing!")
         
-tranfer_vars = gameone()
+transfer_vars = gameone()
+players = getPlayer()
+#transfer_vars = [getCatnAns(), players]
+players = gametwo(transfer_vars)
+finalJeopardy(players)
