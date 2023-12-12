@@ -249,7 +249,7 @@ def dog():
          "yodel"),
         ("The Labrador Retriver, one of America's most popular dog, is actually from this country in the far north.",
          "newfoundland"),
-        ("There dogs - two Pomeranians and a Pekingese - survived the sinking of this massive passenger liner in 1912.",
+        ("Three dogs - two Pomeranians and a Pekingese - survived the sinking of this massive passenger liner in 1912.",
          "titanic"),
         ("This type of dog could beat out a cheetah in a race, as they can run at about 35 miles per hour for an elongated period of time.",
          "greyhound"),
