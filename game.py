@@ -429,8 +429,10 @@ def gameone():
         qna = QnA(cna[cCat][1][cQuest][0], cna[cCat][1][cQuest][1])
         if(len(cna) == 1) and (len(cna[cCat][1]) == 1) and (dd == 0):
             dailyDouble(qna, players[player])
-        elif(random.randint(1, 10) == 10) and (dd == 0):
+            dd+=1
+        elif(random.randint(1, 15) == 15) and (dd == 0):
             dailyDouble(qna, players[player])
+            dd+=1
         else:
             print("")
             print(qna.getQuestion())
@@ -503,7 +505,7 @@ def gametwo(vars):
                 print("Invalid input. Please try again.")
                 continue
         qna = QnA(cna[cCat][1][cQuest][0], cna[cCat][1][cQuest][1])
-        if(len(cna) <= 2) and (len(cna[cCat][1]) == 1 or len(cna[cCat][1]) == 2) and (dd < 2):
+        if(len(cna) <= 2) and ((len(cna[cCat][1]) == 1) or (len(cna[cCat][1]) == 2)) and (dd < 2):
             dailyDouble(qna, players[player])
             dd+=1
         elif(random.randint(1, 10) == 10) and (dd < 2):
@@ -602,9 +604,12 @@ def finalJeopardy(players):
     print("3. {} with {} points".format(sorted_players[0].getName(), sorted_players[0].getPoints()))
     print("{} has won!".format(sorted_players[2].getName()))
     print("Thanks for playing!")
-        
-transfer_vars = gameone()
-players = getPlayer()
-#transfer_vars = [getCatnAns(), players]
-players = gametwo(transfer_vars)
-finalJeopardy(players)
+
+def game():
+    transfer_vars = gameone()
+    #players = getPlayer()
+    #transfer_vars = [getCatnAns(), players]
+    players = gametwo(transfer_vars)
+    finalJeopardy(players)
+
+game()
