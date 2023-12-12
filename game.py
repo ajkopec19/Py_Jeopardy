@@ -558,7 +558,6 @@ def finalJeopardy(players):
     qna = QnA(fjcna[qnaNum][1][0], fjcna[qnaNum][1][1])
     wagers = []
     for player in players:
-        player.addPoints(2000)
         print("{}, you're up.".format(player.getName()))
         print("You currently have {} points.".format(player.getPoints()))
         if(player.getPoints() <= 0):
