@@ -574,6 +574,10 @@ def finalJeopardy(players):
                 else:
                     wagers.append(wager)
                     w = False
+    
+    print("")
+    print("The category is: {}".format(fjcna[qnaNum][0][0]))
+    print(fjcna[qnaNum][0][1])
     print("")
     print("Everyone, here is your question:")
     print(qna.getQuestion())
