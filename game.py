@@ -562,6 +562,7 @@ def finalJeopardy(players):
         print("You currently have {} points.".format(player.getPoints()))
         if(player.getPoints() <= 0):
             print("You will not be able to earn points in Double Jeopardy. You can, however, still answer the question.")
+            wagers.append(0)
             g = input("Press enter to continue.")
             continue
         else:
