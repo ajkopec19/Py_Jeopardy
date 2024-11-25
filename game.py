@@ -39,9 +39,9 @@ class Player:
         self.points-=subtract
         
 def categories():
-    category = [("Some Nostaglia For Ya", "All answers will pertain to things from the 2000s and early 2010s."),
+    category = [("Some Nostalgia For Ya", "All answers will pertain to things from the 2000s and early 2010s."),
                 ("Be a Good Sport", "All answers will pertain to sports."),
-                ("Eighties Lyrics", "The answers is the name of the song the lyrics are from."), 
+                ("Eighties Lyrics", "The answer is the name of the song the lyrics are from."), 
                 ("Out of this World", "All answers will pertain to astronomy."),
                 ('''Sorry, I Have a "Nut" Allergy''', '''All answers will contain the word "nut".'''),
                 ("The Apple of my Eye", "All answers pertain to apples."),
@@ -130,7 +130,7 @@ def nut():
          "malnutrition"),
         ("Not put to use; ends in -ed",
          "unutilized"),
-        ("A ring-shaped sweet fried dough; five letter",
+        ("A ring-shaped sweet fried dough; five letters",
          "donut"),
         ("A legume crop with edible seeds; also known as a goober.",
          "peanut"),
@@ -145,7 +145,7 @@ def apple():
          "newark"),
         ("This man, best known as Johnny Appleseed, introduced apple trees into states like Pennsylvania and Illinois.",
          "john chapman"),
-        ("Despite apples being promiment in the United States, only this type of apple is native to the country.",
+        ("Despite apples being prominent in the United States, only this type of apple is native to the country.",
          "crabapple"),
         ("Growing apples is actually a science! It's a branch of botany called this, which also encompasses all other fruits like a pear.",
          "pomology"),
@@ -194,7 +194,7 @@ def gng():
     gngQuestions = [
         ("The Mount Tambora Eruption of April 1815; country in Southeast Asia and Oceania",
          "indonesia"),
-        ("Vadivia Earthquake, with a record 9.5 magnitude; country in western South America",
+        ("Valdivia Earthquake, with a record 9.5 magnitude; country in western South America",
          "chile"),
         ("Mount Elbert, the highest point in the Rockies; U.S. state in the west",
          "colorado"),
@@ -209,7 +209,7 @@ def gng():
 
 def homes():
     homesQuestions = [
-        ("Lake Erie is allegedly home to a folkloreish monster with this nickname. It had been spotted on multiple occassions over the course of decades.",
+        ("Lake Erie is allegedly home to a folkloreish monster with this nickname. It had been spotted on multiple occasions over the course of decades.",
          "bessie"),
         ("The lakes have their own area of unexplained plane and boat disappearances, quite similar to this region in the North Atlantic Ocean.",
          "bermuda triangle"),
@@ -219,22 +219,22 @@ def homes():
          "isle royale"),
         ("Lake Michigan and Lake Huron are, hydrologically speaking, one lake because they share the same water and are connected by this narrow passage of water.",
          "strait"),
-        ("When this record-breaking heavy hitter from the Yankees hit his first home run in Toronto, it it believed that the ball landed in Lake Ontario.",
+        ("When this record-breaking heavy hitter from the Yankees hit his first home run in Toronto, it believed that the ball landed in Lake Ontario.",
          "babe ruth")
     ]
     return homesQuestions
 
 def shocking():
     shockingQuestions = [
-        ("Yes, it is possible for it to rain cats and dogs...literally. In Calagary in 1921, thousands of these amphibians poured from the skies.",
+        ("Yes, it is possible for it to rain cats and dogs...literally. In Calgary in 1921, thousands of these amphibians poured from the skies.",
          "frog"),
         ("Occassionally, this type of cloud appearing as bulbous pouches will hang underneath the base of a raincloud after a major thunderstorm.",
          "mammatus"),
-        ("There are four types of thunderstorms: single-cell, multi-cell clusturs, multi-cell lines, and this, which is one of the most destructive thunderstorm types.",
+        ("There are four types of thunderstorms: single-cell, multi-cell clusters, multi-cell lines, and this, which is one of the most destructive thunderstorm types.",
          "supercell"),
         ("In 1992, a breeding facility for burmese pythons was demolished, allowing many of the snakes to escape. How? You have this Category 5 hurricane to thank.",
          "andrew"),
-        ("What do you get when you mix snow with a thunderstorm? This rare weather phenomenon, which is more commonly occuring near larger lakes.",
+        ("What do you get when you mix snow with a thunderstorm? This rare weather phenomenon, which is more commonly occurring near larger lakes.",
          "thundersnow"),
         ("This type of windstorm can reach wind speeds of up to 58 miles per hour and are incredibly dangerous. In Iowa, it caused over 12 billion dollars worth of damage.",
          "derecho")
@@ -247,7 +247,7 @@ def dog():
          "nose"),
         ("The Basenji dog isn't entirely barkless. They can do this, or a form of singing popular in Switzerland.",
          "yodel"),
-        ("The Labrador Retriver, one of America's most popular dog, is actually from this country in the far north.",
+        ("The Labrador Retriever, one of America's most popular dog, is actually from this country in the far north.",
          "newfoundland"),
         ("Three dogs - two Pomeranians and a Pekingese - survived the sinking of this massive passenger liner in 1912.",
          "titanic"),
